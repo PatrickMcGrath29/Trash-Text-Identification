@@ -1,6 +1,7 @@
 # Milestone 2
 
 - [Milestone 2](#milestone-2)
+  - [Introduction](#introduction)
   - [Naive Bayes Classification](#naive-bayes-classification)
     - [Tokens w/ lowest weight](#tokens-w-lowest-weight)
     - [Tokens w/ highest weight](#tokens-w-highest-weight)
@@ -10,6 +11,8 @@
     - [Tokens w/ highest weights](#tokens-w-highest-weights)
     - [Explanation](#explanation-1)
 
+## Introduction
+
 In the previous milestone we started classifying a Kaggle Fake News dataset using a series of different machine learning classifiers. We achieved a range of accuracies, from 68% to 96%. The focus of this milestone was to dig into the findings for each of the classifiers that we used, to get a better understanding into how they are weighing features, to then hopefully determine better features and further increase accuracy.
 
 First, we added additional visualization methods to the Jupyter notebook detailing what our false positives and false negatives are. We also added transparency into the weighting of features, detailing the features with the highest and lowest weights.
@@ -18,28 +21,28 @@ First, we added additional visualization methods to the Jupyter notebook detaili
 
 ### Tokens w/ lowest weight
 
-| index | weight   | token |
-| :---- | :------- | :---- |
-| 0     | -11.9582 | 0000  |
-| 1     | -11.9582 | 001   |
-| 2     | -11.9582 | 0024  |
-| 3     | -11.9582 | 0102  |
-| 4     | -11.9582 | 017   |
-| 5     | -11.9582 | 018   |
-| 6     | -11.9582 | 01pm  |
-| 7     | -11.9582 | 020   |
-| 8     | -11.9582 | 024   |
-| 9     | -11.9582 | 036   |
-| 10    | -11.9582 | 039   |
-| 11    | -11.9582 | 046   |
-| 12    | -11.9582 | 051   |
-| 13    | -11.9582 | 052   |
-| 14    | -11.9582 | 053   |
-| 15    | -11.9582 | 060   |
-| 16    | -11.9582 | 061   |
-| 17    | -11.9582 | 064   |
-| 18    | -11.9582 | 065   |
-| 19    | -11.9582 | 066   |
+| Weight   | Token |
+| :------- | :---- |
+| -11.9582 | 0000  |
+| -11.9582 | 001   |
+| -11.9582 | 0024  |
+| -11.9582 | 0102  |
+| -11.9582 | 017   |
+| -11.9582 | 018   |
+| -11.9582 | 01pm  |
+| -11.9582 | 020   |
+| -11.9582 | 024   |
+| -11.9582 | 036   |
+| -11.9582 | 039   |
+| -11.9582 | 046   |
+| -11.9582 | 051   |
+| -11.9582 | 052   |
+| -11.9582 | 053   |
+| -11.9582 | 060   |
+| -11.9582 | 061   |
+| -11.9582 | 064   |
+| -11.9582 | 065   |
+| -11.9582 | 066   |
 
 ### Tokens w/ highest weight
 | Weight    | Token   |
