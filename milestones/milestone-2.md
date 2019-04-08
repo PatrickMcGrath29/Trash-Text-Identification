@@ -1,5 +1,15 @@
 # Milestone 2
 
+- [Milestone 2](#milestone-2)
+  - [Naive Bayes Classification](#naive-bayes-classification)
+    - [Tokens w/ lowest weight](#tokens-w-lowest-weight)
+    - [Tokens w/ highest weight](#tokens-w-highest-weight)
+    - [Explanation](#explanation)
+  - [Stochastic Gradient Descent](#stochastic-gradient-descent)
+    - [Tokens w/ lowest heights](#tokens-w-lowest-heights)
+    - [Tokens w/ highest weights](#tokens-w-highest-weights)
+    - [Explanation](#explanation-1)
+
 In the previous milestone we started classifying a Kaggle Fake News dataset using a series of different machine learning classifiers. We achieved a range of accuracies, from 68% to 96%. The focus of this milestone was to dig into the findings for each of the classifiers that we used, to get a better understanding into how they are weighing features, to then hopefully determine better features and further increase accuracy.
 
 First, we added additional visualization methods to the Jupyter notebook detailing what our false positives and false negatives are. We also added transparency into the weighting of features, detailing the features with the highest and lowest weights.
