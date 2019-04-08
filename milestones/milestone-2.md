@@ -5,11 +5,15 @@
   - [Naive Bayes Classification](#naive-bayes-classification)
     - [Tokens w/ lowest weight](#tokens-w-lowest-weight)
     - [Tokens w/ highest weight](#tokens-w-highest-weight)
-    - [Explanation](#explanation)
+    - [Analysis](#analysis)
   - [Stochastic Gradient Descent](#stochastic-gradient-descent)
     - [Tokens w/ lowest heights](#tokens-w-lowest-heights)
     - [Tokens w/ highest weights](#tokens-w-highest-weights)
-    - [Explanation](#explanation-1)
+    - [Analysis](#analysis-1)
+  - [Passive Aggressive](#passive-aggressive)
+    - [Tokens w/ lowest weights](#tokens-w-lowest-weights)
+    - [Tokens w/ highest weights](#tokens-w-highest-weights-1)
+    - [Analysis](#analysis-2)
 
 ## Introduction
 
@@ -68,7 +72,7 @@ First, we added additional visualization methods to the Jupyter notebook detaili
 | -5.880526 | to      |
 | -5.177399 | the     |
 
-### Explanation
+### Analysis
 
 The accuracy when using Naive Bayes classification is roughly 68%. When looking at the weights associated with specific tokens, it is clear that there is not much of a correlation between the weight and the likelihood that a word would be in a corpus of text classified as fake news.
 
@@ -124,4 +128,60 @@ The accuracy when using Naive Bayes classification is roughly 68%. When looking 
 | 0.063116 | hillary  |
 | 0.072100 | anti     |
 
-### Explanation
+### Analysis
+
+Stochastic Gradient Descent gives us an accuracy rate of roughl;y 95%. Here we start to see tokens with perhaps more meaning associated to high and low weights. The token `fact` shows up in the set of words with highest weights which is reasonable, however words like `mrs`, `mr`, `ms`, and `an` have a very low weighting when they don't in themselves represent whether content is factual or not.
+
+## Passive Aggressive
+
+### Tokens w/ lowest weights
+| Weight    | Token     |
+| :-------- | :-------- |
+| -6.562925 | breitbart |
+| -6.382216 | said      |
+| -6.183251 | twitter   |
+| -5.887345 | follow    |
+| -5.867927 | 2017      |
+| -4.939482 | mr        |
+| -3.908291 | ms        |
+| -3.077843 | mrs       |
+| -2.990358 | president |
+| -2.986703 | sunday    |
+| -2.875207 | march     |
+| -2.868521 | its       |
+| -2.576587 | democrats |
+| -2.441469 | on        |
+| -2.432432 | dr        |
+| -2.398569 | milo      |
+| -2.277705 | that      |
+| -2.259361 | an        |
+| -2.163066 | pamkeynen |
+| -2.095076 | last      |
+
+### Tokens w/ highest weights
+| Weight   | Token    |
+| :------- | :------- |
+| 2.567435 | via      |
+| 2.572235 | related  |
+| 2.640190 | however  |
+| 2.678863 | print    |
+| 2.764005 | clinton  |
+| 2.912111 | al       |
+| 2.997316 | snip     |
+| 3.203991 | share    |
+| 3.328805 | this     |
+| 3.565803 | self     |
+| 3.628204 | source   |
+| 3.736768 | non      |
+| 3.830771 | co       |
+| 4.216531 | elect    |
+| 4.544882 | us       |
+| 4.835506 | hillary  |
+| 4.893513 | november |
+| 5.133547 | 2016     |
+| 5.675274 | october  |
+| 6.181697 | anti     |
+
+### Analysis
+
+Passive Aggressive
