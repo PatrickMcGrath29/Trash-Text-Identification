@@ -14,6 +14,7 @@
     - [Tokens w/ lowest weights](#tokens-w-lowest-weights)
     - [Tokens w/ highest weights](#tokens-w-highest-weights-1)
     - [Analysis](#analysis-2)
+  - [Next Steps](#next-steps)
 
 ## Introduction
 
@@ -184,4 +185,9 @@ Stochastic Gradient Descent gives us an accuracy rate of roughl;y 95%. Here we s
 
 ### Analysis
 
-Passive Aggressive
+Passive Aggressive achieves an accuracy rate of above 96%. The weights on tokens is similar to those in Stochastic Gradient Descent, with what appears to be slightly more relevance (words like `tpp` and `l1` are no longer as negatively weighted). In all, the weights for tokens does not appear to have a direct corelation to whether or not an article is fake news or not.
+
+
+## Next Steps
+
+Using individual words as features proved to be fairly effective in identifying whether an article is fake news or not **in this dataset**, however we have concerns that the model is too fit to this specific dataset, to the point where it is not actually determining whether an article is reliable or not. The context behind these words is lost when they are used individually as features, meaning logical flow in sentences is not taken into account. To accomodate this, we will likely use Word2Vec and n-grams (and possibly sentiment analysis) to gain additional context into the structure and meaning of sentences, as opposed to individual words. We think this will prove to be a more reliable method of identifying whether a corpus of text is reliable or not, on a wider range of data.
