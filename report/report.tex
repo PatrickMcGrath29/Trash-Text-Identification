@@ -3,12 +3,18 @@
 
 \documentclass[12pt]{article}
 
+\usepackage{amstext}
+\usepackage{array}
+\usepackage{enumerate}
 \usepackage{fontspec}
+\usepackage{multicol}
 \usepackage[square,sort,comma,numbers]{natbib}
 
 \renewcommand{\baselinestretch}{1.2}
 \renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}}
 
+\newcolumntype{L}{>{$}l<{$}}
 \setmainfont{Linux Libertine O}
 
 \title{Using Textual Features to Identify Document Reliability}
@@ -18,16 +24,93 @@
 \begin{document}
 	\maketitle
 	\section{Problem Description}
-	\section{Technical Problem Statement}
-	\section{Methods}
+
+	\section{Problem Formulation}
+
+	\begin{itemize}
+		\item Given the author, title, and text of an article, determine if the article is likely to be reliable or not
+	\end{itemize}
+
+	\begin{tabular}{l | L}
+		Dataset        & D = \{\langle \text{title}_1, \text{author}_1, \text{text}_1, \text{reliability}_1 \rangle \ldots\} \\
+		Training set   & T_a = randomSample_{0.5}(D) \\
+		Testing set    & T_b = D \setminus T_a \\
+		Classifier     & C = trainClassifier(T_a) \\
+		Sample article & a_s \not\in D = \langle \text{title}_s, \text{author}_s, \text{text}_s \rangle \\
+		Prediction     & p_s \in \{\text{reliable}, \text{unreliable}\} = predict(C, a_s) \\
+	\end{tabular}
+
+	\section{Methodology}
+
+	\begin{itemize}
+		\item 18,285-article Kaggle dataset
+		\begin{itemize}
+			\item Use 50\% for training, 50\% for testing
+		\end{itemize}
+		\item Clean data
+		\item Vectorize data: generate (token, count) tuples
+		\item Weight features with TF–IDF
+		\begin{itemize}
+			\item Prioritize words that are more unique to a given document
+		\end{itemize}
+		\item Train model (pick one)
+		\begin{itemize}
+			\item Naïve Bayes
+			\item Stochastic Gradient Descent
+			\item Passive Aggressive
+		\end{itemize}
+		\item Use model to predict reliability of test dataset or sample article
+	\end{itemize}
+
+	\subsection{Passive Aggressive Classification}
+
+	\begin{itemize}
+		\item Online algorithm, streaming data
+		\begin{itemize}
+			\item Consume example, update classifier, discard example
+		\end{itemize}
+	\end{itemize}
+
 	\section{Empirical Results}
 	\section{Analysis}
+
+	\begin{itemize}
+		\item Objective: Identify misinformation
+		\item Classification based on words in article
+		\begin{itemize}
+			\item Doesn’t account for context of words
+		\end{itemize}
+		\item Clear bias in dataset
+		\begin{itemize}
+			\item Overfitting?
+		\end{itemize}
+		\item Correlation !== Causation
+	\end{itemize}
+
 	\section{Discussion}
-
-
 	\section{Future Work}
 
 	Work in this area could be used to inform social media users whether linked articles are likely to be reliable or not. However, its implementation need be informed---Pennycook et al. found that labelling disputed articles with a warning causes unlabelled articles to appear more accurate. Crucially, they found that this \textit{Implied Truth Effect} is reversed when verified articles are also labelled \cite{pennycook}.
+
+	\begin{itemize}
+		\item Investigate what kinds of articles are misclassified
+		\item Tweak specificity and precision of classifier
+		\item Use n-grams, Word2Vec, Doc2Vec
+		\begin{itemize}
+			\item Improve context around words, instead of standalone words
+		\end{itemize}
+	\end{itemize}
+
+	\section{Reflection}
+
+	\begin{itemize}
+		\item Have a more established definition of what misinformation is
+		\item Opportunity to debug classification process
+		\begin{itemize}
+			\item Identify improvements
+			\item Adjust features
+		\end{itemize}
+	\end{itemize}
 
 	\bibliographystyle{plainnat}
 	\bibliography{references}
