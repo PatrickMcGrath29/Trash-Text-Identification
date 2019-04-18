@@ -72,6 +72,21 @@
 	\end{itemize}
 
 	\section{Empirical Results}
+
+	\begin{tabular}{r | l l l}
+		                & Naïve Bayes & Stochastic Gradient Descent & Passive Aggressive \\
+		\hline
+		accuracy        & 70.67\%     & 94.76\%                     & 96.31\%            \\
+		false positives & 2           & 211                         & 150                \\
+		false negatives & 2680        & 268                         & 187                \\
+		specificity     & 33.72\%     & 93.49\%                     & 96.08\%            \\
+		precision       & 99.92\%     & 96.67\%                     & 96.12\%            \\
+	\end{tabular}
+
+	\textit{Specificity} is calculated as the number of correct negative predictions divided by the total number of negatives.
+
+	\textit{Precision} is the number of correct positive results divided by the number of positive results predicted by the classifier.
+
 	\section{Analysis}
 
 	\begin{itemize}
