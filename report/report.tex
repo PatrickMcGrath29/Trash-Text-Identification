@@ -9,6 +9,7 @@
 \usepackage{fontspec}
 \usepackage{multicol}
 \usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{url}
 
 \renewcommand{\baselinestretch}{1.2}
 \renewcommand{\thesection}{\arabic{section}.}
@@ -23,7 +24,11 @@
 
 \begin{document}
 	\maketitle
-	\section{Problem Description}
+	\section{Introduction}
+
+	In early 2018, the American Dialect Society named ``fake news'' its Word of the Year. They note that in 2016, ``its meaning was restricted to fictional or embellished stories presented as authentic news, disseminated for financial gain or for propagandistic purposes'', but that more recently, President Trump has often wielded it ``as a rhetorical bludgeon to disparage any news report that he happened to disagree with'' \cite{ads}. The term’s distinction as the Word of the Year and prevalence in politcal discourse highlights the seriousness of this issue in the present.
+
+	Given the pervasiveness of fake news and other types of misinformation, people may have difficulty determining the reliability of articles they come across. We approach this problem using supervised learning to assess whether a user can trust a given article online.
 
 	\section{Problem Formulation}
 
