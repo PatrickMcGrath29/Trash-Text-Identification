@@ -151,16 +151,11 @@
 
 	\section{Future Work}
 
-	Work in this area could be used to inform social media users whether linked articles are likely to be reliable or not. However, its implementation need be informed---Pennycook et al. found that labelling disputed articles with a warning causes unlabelled articles to appear more accurate. Crucially, they found that this \textit{Implied Truth Effect} is reversed when verified articles are also labelled \cite{pennycook}.
+	Naturally, we would like to improve the accuracy of our model. One way we could do this is to further investigate what kinds of articles are misclassified, which would allow us to deduce one or more underlying factors that causes certain misclassifications, which we could then correct for. Another way we could improve our model would be to improve context around words. At the moment, our method only takes into account unigrams, but we instead use techniques such as n-grams, Word2Vec, or Doc2Vec.
 
-	\begin{itemize}
-		\item Investigate what kinds of articles are misclassified
-		\item Tweak specificity and precision of classifier
-		\item Use n-grams, Word2Vec, Doc2Vec
-		\begin{itemize}
-			\item Improve context around words, instead of standalone words
-		\end{itemize}
-	\end{itemize}
+	Depending on the use case, it would also be wise to tweak the specificity and precision of the classifier. We could, for example, decide that false negatives are better than false positives in a particular use case.
+
+	Practically speaking, work in this area could be used to inform social media users whether linked articles are likely to be reliable or not. However, its implementation need be informed---Pennycook et al. found that labelling disputed articles with a warning causes unlabelled articles to appear more accurate. Crucially, they found that this \textit{Implied Truth Effect} is reversed when verified articles are also labelled \cite{pennycook}.
 
 	\section{Reflection}
 
