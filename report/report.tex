@@ -10,6 +10,7 @@
 \usepackage{array}
 \usepackage{enumerate}
 \usepackage{fontspec}
+\usepackage{hyperref}
 \usepackage{multicol}
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage{url}
@@ -51,7 +52,7 @@
 
 	\section{Methodology}
 
-	To train our model, we used fake news data from data competiton platform Kaggle consisting of a 20,800-row CSV dataset for training and a 5,200-row CSV dataset for testing \cite{kaggle}. Each row represents a news article and contains a unique ID as well as the title, author, and text of the article. Additionally, the training file contains a reliability judgment label---1 for potentially unreliable, and 0 for reliable.
+	To train our model\footnote{A Jupyter Notebook with our source code is available at \url{https://github.com/PatrickMcGrath29/Trash-Text-Identification/blob/master/classification.ipynb}.}, we used fake news data from data competiton platform Kaggle consisting of a 20,800-row CSV dataset for training and a 5,200-row CSV dataset for testing \cite{kaggle}. Each row represents a news article and contains a unique ID as well as the title, author, and text of the article. Additionally, the training file contains a reliability judgment label---1 for potentially unreliable, and 0 for reliable.
 
 	Because we approached the problem with supervised learning and the testing dataset contains no reliability labels, we discarded it. We suspect that the reliability judgments for this dataset are merely unavailable in order to prevent competitors from training on the testing dataset.
 
