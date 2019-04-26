@@ -35,18 +35,7 @@
 
 	\section{Problem Formulation}
 
-	\begin{itemize}
-		\item Given the author, title, and text of an article, determine if the article is likely to be reliable or not
-	\end{itemize}
-
-	\begin{tabular}{l | L}
-		Dataset        & D = \{\langle \text{title}_1, \text{author}_1, \text{text}_1, \text{reliability}_1 \rangle \ldots\} \\
-		Training set   & T_a = randomSample_{0.5}(D) \\
-		Testing set    & T_b = D \setminus T_a \\
-		Classifier     & C = trainClassifier(T_a) \\
-		Sample article & a_s \not\in D = \langle \text{title}_s, \text{author}_s, \text{text}_s \rangle \\
-		Prediction     & p_s \in \{\text{reliable}, \text{unreliable}\} = predict(C, a_s) \\
-	\end{tabular}
+	We formulate the problem by starting with some dataset $D = \{\langle \text{title}_1, \text{author}_1, \text{text}_1, \text{reliability}_1 \rangle \ldots\}$ that consists of a set of tuples, each tuple representing an article. Each article has a title, author, full text, and a reliabiltiy judgment. From this dataset, we randomly sample a subset of the articles to get a training set $T_a = randomSample(D)$. Our testing set $T_b = D \setminus T_a$ is the set difference of the original dataset and the training set. We use the training set to train a classifier $C = trainClassifier(T_a)$. And finally, using a novel article $a_n \not\in D = \langle \text{title}_n, \text{author}_n, \text{text}_n \rangle$ (without a reliability judgment), the classifier determines a reliabiltiy prediction $p_n \in \{\text{reliable}, \text{unreliable}\} = predict(C, a_n)$ to report whether the article is likely to be reliable.
 
 	\section{Methodology}
 
