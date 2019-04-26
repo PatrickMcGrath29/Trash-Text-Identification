@@ -140,15 +140,14 @@
 		8   & 0.046667	        & us            \\
 		9   & 0.044610	        & self          \\
 		10  & 0.041281          & elect         \\
-	\end{tabular}     
-	
+	\end{tabular}
+
 	\break
-	
+
     After looking at the token weight pairs that were most influential in determining whether an article was reliable or not, we came to the realization that generally speaking the context of the word is completely lost with our approach, which decreases our ability to truly identify whether a body of text is misinformation or not.
-    
+
     We also noticed clear bias in the findings, which is likely a result of the dataset that is being operated on. For example, the term 2017 has a large negative weight associated to it, but the term 2016 has a large positive weight associated to it. It does not seem logical that a date would be a determining factor in whether or not a body of text is misinformation or not, and therefore we came to the conclusion that this was an example of over-fitting on the training data. In this case, it is clear that correlation does not imply causation.
 
-	\section{Discussion}
 	\section{Future Work}
 
 	Work in this area could be used to inform social media users whether linked articles are likely to be reliable or not. However, its implementation need be informed---Pennycook et al. found that labelling disputed articles with a warning causes unlabelled articles to appear more accurate. Crucially, they found that this \textit{Implied Truth Effect} is reversed when verified articles are also labelled \cite{pennycook}.
