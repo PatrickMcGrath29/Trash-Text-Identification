@@ -59,31 +59,31 @@
 	We then used the data to train each of three classifiers: a Naïve Bayes classifier, a stochastic gradient descent classifier, and a passive aggressive classifier. Once the classifiers were trained, we used the model to predict the reliability of articles in the testing dataset.
 
 	\subsection{Passive Aggressive Classification}
-    
-    Passive Aggressive Classification is a process using an online algorithm that works best when streaming data, in that the process uses data to update weights and then discards the data. Similar to other forms of classification, the objective is to classify objects into a series of buckets. 
-    
+
+    Passive Aggressive Classification is a process using an online algorithm that works best when streaming data, in that the process uses data to update weights and then discards the data. Similar to other forms of classification, the objective is to classify objects into a series of buckets.
+
     To do this, we evaluate objects with a series of functions that then determine where in the classification space the object should land. If the classification implies that the weight value (which serves to separate different classification groups) is not correct, then a hinge loss function is used to update the weight.
     \break
     The basic algorithm for Passive Aggressive Classification is as follows:
     \break
-    
-    \def\BState{\State\hskip-\ALG@thistlm}
-    \makeatother
-    \begin{algorithm}
-    \begin{algorithmic}[1]
-    \Procedure{Passive Aggressive Classification}{}
-    \State $\text{initialize w} \gets (0, ..., 0)$
-    \State $\text{Monitor Stream...}$
-    \State $\text{ingest new document d } \gets (d_1, ..., d_v)$
-    \State $\text{Vectorize, apply TF-IDF}$
-    \State $\text{Predict classification with } d^T w$
-    \State $\text{Observe label for document}$
-    \State $\text{Compute Loss L} \gets max(0, 1-y*d^T*w)$
-    \State $\text{w}_{\text{new}} \gets w + y*L*d$
-    \EndProcedure
-    \end{algorithmic}
-    \end{algorithm}
-    
+
+	\def\BState{\State\hskip-\ALG@thistlm}
+	\makeatother
+	\begin{algorithm}
+	\begin{algorithmic}[1]
+			\Procedure{Passive Aggressive Classification}{}
+			\State Initialize $w \gets (0, ..., 0)$
+			\State Monitor stream
+			\State Ingest new document $d \gets (d_1, ..., d_v)$
+			\State Vectorize and apply TF--IDF
+			\State Predict classification with $d^T w$
+			\State Observe label for document
+			\State Compute loss $L \gets max(0, 1 - y d^T w)$
+			\State $w_{\text{new}} \gets w + y L d$
+			\EndProcedure
+		\end{algorithmic}
+	\end{algorithm}
+
 
 	\section{Empirical Results}
 
