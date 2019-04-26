@@ -7,6 +7,9 @@
 \usepackage{array}
 \usepackage{enumerate}
 \usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 \usepackage{multicol}
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage{url}
@@ -56,10 +59,31 @@
 	We then used the data to train each of three classifiers: a Naïve Bayes classifier, a stochastic gradient descent classifier, and a passive aggressive classifier. Once the classifiers were trained, we used the model to predict the reliability of articles in the testing dataset.
 
 	\subsection{Passive Aggressive Classification}
-
-    Passive Aggressive Classification is a process using an online algorithm that works best when streaming data, in that the process uses data to update weights and then discards the data. Similar to other forms of classification, the objective is to classify objects into a series of buckets.
-
+    
+    Passive Aggressive Classification is a process using an online algorithm that works best when streaming data, in that the process uses data to update weights and then discards the data. Similar to other forms of classification, the objective is to classify objects into a series of buckets. 
+    
     To do this, we evaluate objects with a series of functions that then determine where in the classification space the object should land. If the classification implies that the weight value (which serves to separate different classification groups) is not correct, then a hinge loss function is used to update the weight.
+    \break
+    The basic algorithm for Passive Aggressive Classification is as follows:
+    \break
+    
+    \def\BState{\State\hskip-\ALG@thistlm}
+    \makeatother
+    \begin{algorithm}
+    \begin{algorithmic}[1]
+    \Procedure{Passive Aggressive Classification}{}
+    \State $\text{initialize w} \gets (0, ..., 0)$
+    \State $\text{Monitor Stream...}$
+    \State $\text{ingest new document d } \gets (d_1, ..., d_v)$
+    \State $\text{Vectorize, apply TF-IDF}$
+    \State $\text{Predict classification with d^T w}$
+    \State $\text{Observe label for document}$
+    \State $\text{Compute Loss L} \gets max(0, 1-y*d^T*w)$
+    \State $\text{w_{new}} \gets w + y*L*d$
+    \EndProcedure
+    \end{algorithmic}
+    \end{algorithm}
+    
 
 	\section{Empirical Results}
 
@@ -73,7 +97,7 @@
 		precision       & 99.92\%     & 96.67\%                     & 96.12\%            \\
 	\end{tabular}
     \break
-
+    
 	\textit{Specificity} is calculated as the number of correct negative predictions divided by the total number of negatives.
 
 	\textit{Precision} is the number of correct positive results divided by the number of positive results predicted by the classifier.
@@ -81,14 +105,14 @@
 	\section{Analysis}
 
     When beginning the analysis of the findings attained from the three different classification methods we had to reorient ourselves around the objective, which is the identification of misinformation.
-
+    
     If we defined the optimal approach as the one with the highest precision, that is, the highest accuracy rate when predicting reliable articles, then we would have chosen Naïve Bayes as the optimal classifier, given it boasts a precision of 99.92\%. We however thought that the optimal approach would be the one with the highest total accuracy, taking account to the correct classification of reliable and unreliable articles. Passive Aggressive was a clear winner here, with a general accuracy greater than the other two methods.
-
+    
     After concluding that Passive Aggressive Classification was our optimal approach we began to look at the tokens that had both the highest and lowest weights.
-
+    
     \subsection{Tokens with Lowest Weights}
 	\begin{tabular}{r | l l}
-		    & Weight        & Token         \\
+		                & Weight & Token & \\
 		\hline
 		1   & -0.077192     & said          \\
 		2   & -0.077192	    & breitbart     \\
@@ -100,11 +124,11 @@
 		8   & -0.046095	    & added         \\
 		9   & -0.035301	    & president     \\
 		10  & -0.034659     & mrs           \\
-	\end{tabular}
-
+	\end{tabular}    
+    
     \subsection{Tokens with Highest Weights}
 	\begin{tabular}{r | l l}
-		    & Weight            & Token         \\
+		                & Weight & Token & \\
 		\hline
 		1   & 0.072100	        & anti          \\
 		2   & 0.063116		    & hillary       \\
@@ -116,12 +140,12 @@
 		8   & 0.046667	        & us            \\
 		9   & 0.044610	        & self          \\
 		10  & 0.041281          & elect         \\
-	\end{tabular}
-
+	\end{tabular}     
+	
 	\break
-
+	
     After looking at the token weight pairs that were most influential in determining whether an article was reliable or not, we came to the realization that generally speaking the context of the word is completely lost with our approach, which decreases our ability to truly identify whether a body of text is misinformation or not.
-
+    
     We also noticed clear bias in the findings, which is likely a result of the dataset that is being operated on. For example, the term 2017 has a large negative weight associated to it, but the term 2016 has a large positive weight associated to it. It does not seem logical that a date would be a determining factor in whether or not a body of text is misinformation or not, and therefore we came to the conclusion that this was an example of over-fitting on the training data. In this case, it is clear that correlation does not imply causation.
 
 	\section{Discussion}
