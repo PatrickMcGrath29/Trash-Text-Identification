@@ -57,22 +57,22 @@
 
 	We extracted and cleaned 18,285 articles from the training dataset with the pandas library \cite{pandas} and then used a seed to pseudo-randomly withhold 50\% of the articles for use in a testing set. Using scikit-learn \cite{scikit-learn}, we vectorized the data into token--count tuples and weighted the features with TF--IDF to prioritize words that are more unique to a given document.
 
-	We then used the data to train each of three classifiers: a Naïve Bayes classifier, a stochastic gradient descent classifier, and a passive aggressive classifier. Once the classifiers were trained, we used the model to predict the reliability of articles in the testing dataset.
+	We then used the data to train each of three classifiers: a naïve Bayes classifier, a stochastic gradient descent classifier, and a Passive--Aggressive classifier. Once the classifiers were trained, we used the model to predict the reliability of articles in the testing dataset.
 
-	\subsection{Passive Aggressive Classification}
+	\subsection{Passive--Aggressive Classification}
 
-    Passive Aggressive Classification is a process using an online algorithm that works best when streaming data, in that the process uses data to update weights and then discards the data. Similar to other forms of classification, the objective is to classify objects into a series of buckets.
+    Passive--Aggressive classification is a process using an online algorithm that works best when streaming data, in that the process uses data to update weights and then discards the data. Similar to other forms of classification, the objective is to classify objects into a series of buckets.
 
     To do this, we evaluate objects with a series of functions that then determine where in the classification space the object should land. If the classification implies that the weight value (which serves to separate different classification groups) is not correct, then a hinge loss function is used to update the weight.
     \break
-    The basic algorithm for Passive Aggressive Classification is as follows:
+    The basic algorithm for Passive--Aggressive classification is as follows:
     \break
 
 	\def\BState{\State\hskip-\ALG@thistlm}
 	\makeatother
 	\begin{algorithm}
 	\begin{algorithmic}[1]
-			\Procedure{Passive Aggressive Classification}{}
+			\Procedure{Passive--Aggressive Classification}{}
 			\State Initialize $w \gets (0, ..., 0)$
 			\State Monitor stream
 			\State Ingest new document $d \gets (d_1, ..., d_v)$
@@ -89,13 +89,13 @@
 	\section{Empirical Results}
 
 	\begin{tabular}{r | l l l}
-		                & Naïve Bayes & Stochastic Gradient Descent & Passive Aggressive \\
+		                & Naïve Bayes & Stochastic Gradient Descent & Passive--Aggressive \\
 		\hline
-		accuracy        & 70.67\%     & 94.76\%                     & 96.31\%            \\
-		false positives & 2           & 211                         & 150                \\
-		false negatives & 2680        & 268                         & 187                \\
-		specificity     & 33.72\%     & 93.49\%                     & 96.08\%            \\
-		precision       & 99.92\%     & 96.67\%                     & 96.12\%            \\
+		accuracy        & 70.67\%     & 94.76\%                     & 96.31\%             \\
+		false positives & 2           & 211                         & 150                 \\
+		false negatives & 2680        & 268                         & 187                 \\
+		specificity     & 33.72\%     & 93.49\%                     & 96.08\%             \\
+		precision       & 99.92\%     & 96.67\%                     & 96.12\%             \\
 	\end{tabular}
     \break
 
@@ -107,9 +107,9 @@
 
     When beginning the analysis of the findings attained from the three different classification methods we had to reorient ourselves around the objective, which is the identification of misinformation.
 
-    If we defined the optimal approach as the one with the highest precision, that is, the highest accuracy rate when predicting reliable articles, then we would have chosen Naïve Bayes as the optimal classifier, given it boasts a precision of 99.92\%. We however thought that the optimal approach would be the one with the highest total accuracy, taking account to the correct classification of reliable and unreliable articles. Passive Aggressive was a clear winner here, with a general accuracy greater than the other two methods.
+    If we defined the optimal approach as the one with the highest precision, that is, the highest accuracy rate when predicting reliable articles, then we would have chosen naïve Bayes as the optimal classifier, given it boasts a precision of 99.92\%. We however thought that the optimal approach would be the one with the highest total accuracy, taking account to the correct classification of reliable and unreliable articles. Passive--Aggressive was a clear winner here, with a general accuracy greater than the other two methods.
 
-    After concluding that Passive Aggressive Classification was our optimal approach we began to look at the tokens that had both the highest and lowest weights.
+    After concluding that Passive--Aggressive classification was our optimal approach we began to look at the tokens that had both the highest and lowest weights.
 
     \subsection{Tokens with Lowest Weights}
 	\begin{tabular}{r | l l}
