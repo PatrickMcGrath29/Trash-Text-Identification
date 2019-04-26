@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{multicol}
 \usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{parskip}
 \usepackage{url}
 
 \renewcommand{\baselinestretch}{1.2}
@@ -81,9 +82,8 @@
     Passive--Aggressive classification is a process using an online algorithm that works best when streaming data, in that the process uses data to update weights and then discards the data. Similar to other forms of classification, the objective is to classify objects into a series of buckets.
 
     To do this, we evaluate objects with a series of functions that then determine where in the classification space the object should land. If the classification implies that the weight value (which serves to separate different classification groups) is not correct, then a hinge loss function is used to update the weight.
-    \break
+
     The basic algorithm for Passive--Aggressive classification is as follows:
-    \break
 
 	\def\BState{\State\hskip-\ALG@thistlm}
 	\makeatother
