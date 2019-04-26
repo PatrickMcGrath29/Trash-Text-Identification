@@ -21,6 +21,18 @@
 \newcolumntype{L}{>{$}l<{$}}
 \setmainfont{Linux Libertine O}
 
+\makeatletter
+\def\old@comma{,}
+\catcode`\,=13
+\def,{%
+  \ifmmode%
+    \old@comma\discretionary{}{}{}%
+  \else%
+    \old@comma%
+  \fi%
+}
+\makeatother
+
 \title{Using Textual Features to Identify Document Reliability}
 \author{Julien Cherry \and Patrick McGrath}
 \date{April 26\textsuperscript{th}, 2019}
