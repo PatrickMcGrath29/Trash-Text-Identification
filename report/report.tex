@@ -76,10 +76,10 @@
     \State $\text{Monitor Stream...}$
     \State $\text{ingest new document d } \gets (d_1, ..., d_v)$
     \State $\text{Vectorize, apply TF-IDF}$
-    \State $\text{Predict classification with d^T w}$
+    \State $\text{Predict classification with } d^T w$
     \State $\text{Observe label for document}$
     \State $\text{Compute Loss L} \gets max(0, 1-y*d^T*w)$
-    \State $\text{w_{new}} \gets w + y*L*d$
+    \State $\text{w}_{\text{new}} \gets w + y*L*d$
     \EndProcedure
     \end{algorithmic}
     \end{algorithm}
@@ -112,7 +112,7 @@
     
     \subsection{Tokens with Lowest Weights}
 	\begin{tabular}{r | l l}
-		                & Weight & Token & \\
+		    & Weight        & Token         \\
 		\hline
 		1   & -0.077192     & said          \\
 		2   & -0.077192	    & breitbart     \\
@@ -124,11 +124,11 @@
 		8   & -0.046095	    & added         \\
 		9   & -0.035301	    & president     \\
 		10  & -0.034659     & mrs           \\
-	\end{tabular}    
-    
+	\end{tabular}
+
     \subsection{Tokens with Highest Weights}
 	\begin{tabular}{r | l l}
-		                & Weight & Token & \\
+		    & Weight            & Token         \\
 		\hline
 		1   & 0.072100	        & anti          \\
 		2   & 0.063116		    & hillary       \\
