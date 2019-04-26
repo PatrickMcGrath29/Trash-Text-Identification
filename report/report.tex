@@ -56,7 +56,23 @@
 
 	Because we approached the problem with supervised learning and the testing dataset contains no reliability labels, we discarded it. We suspect that the reliability judgments for this dataset are merely unavailable in order to prevent competitors from training on the testing dataset.
 
-	We extracted and cleaned 18,285 articles from the training dataset with the pandas library \cite{pandas} and then used a seed to pseudo-randomly withhold 50\% of the articles for use in a testing set. Using scikit-learn \cite{scikit-learn}, we vectorized the data into token--count tuples and weighted the features with TF--IDF to prioritize words that are more unique to a given document.
+	We extracted and cleaned 18,285 articles from the training dataset with the pandas library \cite{pandas}. Here is a random sample of five articles:
+
+	\begin{tabular}{r | p{3cm} | p{2cm} | p{3cm} | l}
+		ID & Title & Author & Text & Label \\
+		\hline
+		191   & Mr. Trump’s Wild Ride - The New York Times        & Robert Draper    & ‘Have you seen the latest polls? I’m beating H... & reliable   \\
+		\hline
+		7825  & Will Barack Obama delay or suspend the electio... & Michael Snyder   & VIDEOS Will Barack Obama delay or suspend the ... & unreliable \\
+		\hline
+		17894 & The Man Who Loathed Pajamas - The New York Times  & Jon Caramanica   & Two days before the snowstorm that was suppose... & reliable   \\
+		\hline
+		17240 & Assange claims ‘crazed’ Clinton campaign tried... & Editor           & Julian Assange has claimed the Hillary Clinton... & unreliable \\
+		\hline
+		11674 & Rory McIlroy Comes Back Early From Golf Rehab ... & Robert J. Marlow & Rory McIlroy joined President Donald Trump on ... & reliable   \\
+	\end{tabular}
+
+	We then used a seed to pseudo-randomly withhold 50\% of the articles for use in a testing set. Using scikit-learn \cite{scikit-learn}, we vectorized the data into token--count tuples and weighted the features with TF--IDF to prioritize words that are more unique to a given document.
 
 	We then used the data to train each of three classifiers: a naïve Bayes classifier, a stochastic gradient descent classifier, and a Passive--Aggressive classifier. Once the classifiers were trained, we used the model to predict the reliability of articles in the testing dataset.
 
