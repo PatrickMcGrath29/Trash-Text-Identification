@@ -1,0 +1,14 @@
+def sseasy(integers):
+    for i in range(len(integers)):
+        maxVal = integers[i]
+        sumVal = 0
+        for j in range(i):
+            sumVal += integers[j]
+
+        if maxVal <= sumVal:
+            return False
+
+    return True
+
+ints = [0, 1, 2, 4]
+print sseasy(ints)
